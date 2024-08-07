@@ -30,7 +30,8 @@ class S3Client(SchemeClient):
                 "s3", config=botocore.client.Config(signature_version=botocore.UNSIGNED)
             )
         else:
-            s3_resource = session.resource("s3")
+            s3_endpoint_url = os.environ.get("S3_ENDPOINT_URL")
+            s3_resource = session.resource("s3", endpoint_url=s3_endpoint_url)
         self.s3_object = s3_resource.Object(bucket_name, s3_path)
         self._loaded = False
 

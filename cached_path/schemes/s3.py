@@ -3,6 +3,7 @@ AWS S3.
 """
 
 import io
+import os
 from typing import Optional, Tuple
 
 import boto3.session
